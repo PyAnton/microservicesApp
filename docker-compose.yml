@@ -15,10 +15,22 @@ services:
     build:
       context: ./test-service
       dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
     networks:
       - my-network
+    depends_on:
+      - eureka-server  # Ждем, пока eureka-server запустится
+    command: sleep 10 && your_start_command_here  # Задержка 10 секунд перед выполнением команды
+
+  test-service2:
+    container_name: test-service2
+    build:
+      context: ./test-service
+      dockerfile: Dockerfile
+    networks:
+      - my-network
+    depends_on:
+      - eureka-server  # Ждем, пока eureka-server запустится
+    command: sleep 10 && your_start_command_here  # Задержка 10 секунд перед выполнением команды
 
   api-gateway:
     container_name: api-gateway
@@ -26,7 +38,7 @@ services:
       context: ./api-gateway
       dockerfile: Dockerfile
     ports:
-      - "8082:8082"
+      - "8080:8080"
     networks:
       - my-network
 

@@ -9,6 +9,8 @@ eureka:
   instance:
     preferIpAddress: true
     lease-renewal-interval-in-seconds: 35
+    instance-id: ${spring.application.name}:${random.uuid}
 server:
-  port: 8080
+  port: 0
+
 

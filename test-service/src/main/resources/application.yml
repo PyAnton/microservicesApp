@@ -8,6 +8,7 @@ eureka:
       defaultZone: ${EUREKA_URI:http://eureka-server:8761/eureka}
   instance:
     preferIpAddress: true
-    lease-renewal-interval-in-seconds: 30
-
+    lease-renewal-interval-in-seconds: 35
+server:
+  port: 8080
 

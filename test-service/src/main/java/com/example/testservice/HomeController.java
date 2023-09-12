@@ -11,4 +11,9 @@ public class HomeController {
     public String getHome(){
         return "Welcome in home!";
     }
+    @GetMapping("/test")
+    @ResponseBody
+    public String getTest(){
+        return "ready Test!";
+    }
 }
